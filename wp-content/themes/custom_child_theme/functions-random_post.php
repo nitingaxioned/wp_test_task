@@ -99,13 +99,37 @@ function show_random_three_grade() {
         get_option('post_2'),
         get_option('post_3')
     );
+    $queryArr = array(
+        'posts_per_page' => -1,
+        'post_type' => 'grade',
+    );
+    $res = new wp_Query($queryArr);
     foreach ($ids as $id) {
-		$queryArr = array(
-            'p' => $id,
-		);
-		$res = new wp_Query($queryArr);
 		while($res->have_posts()) {
-			show_post($res);
+            $res->the_post(); 
+            (get_the_ID() == $id) && show_posts();
         }
     }
+}
+
+function show_posts() {
+    ?>
+      <div class='flex-box'>
+        <?php
+            if( has_post_thumbnail() ) {
+                echo '<img src="'.get_the_post_thumbnail_url().'" alt="thumbnail" width="20%">';
+            } ?>
+            <div class="data-txt">
+                <?php if ( get_the_title() != null ) {?>
+                    <h2><?php the_title(); ?></h2>
+                    <span><?php echo get_the_date(); ?></span>
+                <?php } 
+                if ( the_excerpt() != null ) {
+                    the_excerpt();
+                }
+                ?>
+                <a title="Read More" href="<?php the_permalink(); ?>"><button class='btn'>Read More</button></a>
+            </div>
+      </div>
+    <?php
 }
