@@ -25,3 +25,18 @@ p {
   font-weight: 600;
   font-family: courier, Helvetica, sans-serif;
 }
+
+.flex-box {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-box img {
+  width: 10%;
+  max-height: 100px;
+}
+
+.flex-box .data-txt {
+  width: 80%;
+  margin-left: 20px;
+}
