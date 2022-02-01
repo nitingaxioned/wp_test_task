@@ -31,5 +31,8 @@ add_theme_support( 'post-thumbnails' );
 // custom post type
 get_template_part( 'functions', 'custom_post_type' );
 
+// custom random post
+get_template_part( 'functions', 'random_post' );
+
 // filter functionality
 get_template_part( 'functions', 'filter-ajax' );

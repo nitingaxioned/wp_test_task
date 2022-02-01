@@ -28,16 +28,7 @@
 				echo "<h4>".get_field('tagline')."</h4>"; 
 			}
 		endwhile; // End of the loop.
-		$id = get_the_ID();
-		$queryArr = array(
-		'posts_per_page' => 3,
-		'post_type' => 'grade',
-		'post__not_in' => array($this_post)
-		);
-		$res = new wp_Query($queryArr);
-		while($res->have_posts()) {
-			show_post($res);
-        }
+		show_random_three_grade();
 		?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
