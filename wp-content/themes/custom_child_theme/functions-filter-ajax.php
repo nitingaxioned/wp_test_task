@@ -29,8 +29,6 @@ function filter_ajax(){
         $res = new wp_Query($queryArr);
         if ($res->found_posts < 1) {
             get_template_part( 'content', 'none' );
-            echo '<pre>';
-            print_r($res);
             hideLoadBtn();
             die();
         }
@@ -84,7 +82,7 @@ function show_post($res) {
             <div class="data-txt">
                 <?php if ( get_the_title() != null ) {?>
                     <h2><?php the_title(); ?></h2>
-                    <span><?php the_date(); ?></span>
+                    <span><?php echo get_the_date(); ?></span>
                 <?php } 
                 if ( the_excerpt() != null ) {
                     the_excerpt();
